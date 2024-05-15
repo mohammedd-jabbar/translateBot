@@ -4,9 +4,9 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "nodemon src/index.ts",
-    "build": "ts-node src/index.ts"
+    "build": "node src/index.ts"
   },
-  "author": "",
+  "author": "Mohammed",
   "license": "ISC",
   "description": "",
   "devDependencies": {

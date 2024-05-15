@@ -8,6 +8,7 @@ require("dotenv").config();
 
 // express server
 const server = express();
+const port = 3000;
 
 // configure telegram with api key
 const bot = new Telegraf(process.env.TELEGRAM_TOKEN as string);
@@ -54,6 +55,10 @@ bot.on("message", async (msg) => {
     console.log(error as TError);
     bot.telegram.sendMessage(chatId, "ببوورە کێشەیەک ڕوویدا!");
   }
+});
+
+server.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
 });
 
 bot.launch();
