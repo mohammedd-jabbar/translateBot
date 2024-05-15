@@ -2,8 +2,9 @@
   "name": "translate-bot",
   "version": "1.0.0",
   "main": "src/index.ts",
+  "type": "commonjs",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "start": "node src/index.ts",
     "build": "node src/index.ts"
   },
   "author": "Mohammed",
