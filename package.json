@@ -2,7 +2,6 @@
   "name": "translate-bot",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "type": "module",
   "scripts": {
     "start": "nodemon src/index.ts",
     "build": "nodemon src/index.ts"
@@ -13,6 +12,7 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.12",
+    "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
@@ -21,7 +21,6 @@
     "express": "^4.19.2",
     "nodemon": "^3.1.0",
     "openai": "^4.47.1",
-    "telegraf": "^4.16.3",
-    "ts-node": "^10.9.2"
+    "telegraf": "^4.16.3"
   }
 }
