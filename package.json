@@ -2,10 +2,9 @@
   "name": "translate-bot",
   "version": "1.0.0",
   "main": "src/index.ts",
-  "type": "commonjs",
   "scripts": {
-    "start": "node src/index.ts",
-    "build": "node src/index.ts"
+    "start": "ts-node src/index.ts",
+    "build": "ts-node src/index.ts"
   },
   "author": "Mohammed",
   "license": "ISC",
