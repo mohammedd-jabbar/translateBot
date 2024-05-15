@@ -5,7 +5,7 @@ WORKDIR /src
 COPY package*.json ./
 COPY . .
 
-RUN npm ci
+RUN npm install
 RUN npm run build
 
 EXPOSE 3000
