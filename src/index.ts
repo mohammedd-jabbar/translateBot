@@ -26,7 +26,11 @@ bot.command("start", (ctx) => {
 bot.on("message", async (msg) => {
   const chatId = msg.chat.id;
   try {
-    if (msg.from.id.toString() === process.env.SPECIAL_USER && msg.text) {
+    if (
+      (msg.from.id.toString() === process.env.SPECIAL_USER ||
+        msg.from.id.toString() === "1001090091") &&
+      msg.text
+    ) {
       // check if the text is arabic or not
       const isArabic = await detectLanguage(msg.text);
 
@@ -36,6 +40,11 @@ bot.on("message", async (msg) => {
 
         // translate English to kurdish
         const translatedText = await translateText(gptAnswer);
+        console.log("Arabic text", msg.text);
+        console.log("====================================");
+        console.log("English text", gptAnswer);
+        console.log("====================================");
+        console.log("Kurdish text", translatedText);
 
         // send the kurdish text to user
         bot.telegram.sendMessage(
