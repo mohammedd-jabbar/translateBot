@@ -1,13 +1,23 @@
+# Use the official Node.js 14 image
 FROM node:14
 
+# Set the working directory
 WORKDIR /src
 
+# Copy the package.json and package-lock.json files
 COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
 COPY . .
 
-RUN npm install
+# Build the application (if needed)
 RUN npm run build
 
+# Expose the port the app runs on
 EXPOSE 3000
 
+# Define the command to run the application
 CMD ["npm", "start"]
