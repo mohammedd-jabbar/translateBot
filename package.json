@@ -4,7 +4,7 @@
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "build": "ts-node src/index.ts"
+    "build": "tsc"
   },
   "author": "Mohammed",
   "license": "ISC",
