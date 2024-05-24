@@ -28,7 +28,8 @@ bot.on("message", async (msg) => {
   try {
     if (
       (msg.from.id.toString() === process.env.SPECIAL_USER ||
-        msg.from.id.toString() === "1001090091") &&
+        msg.from.id.toString() === "1001090091" ||
+        msg.from.id.toString() === process.env.SPECIAL_USER2) &&
       msg.text
     ) {
       // check if the text is arabic or not
