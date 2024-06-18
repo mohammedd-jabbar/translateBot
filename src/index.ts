@@ -33,51 +33,38 @@ bot.on("message", async (msg) => {
       msg.text
     ) {
       // check if the text is arabic or not
-      const isArabic = await detectLanguage(msg.text);
+      const detectLanguageName = await detectLanguage(msg.text);
 
-      if (isArabic === "ar") {
+      if (detectLanguageName) {
         // send the Arabic text to gpt
-        const gptAnswer = await gpt(msg.text);
+        const gptAnswer = await gpt(msg.text, detectLanguageName);
 
         // translate English to kurdish
         const translatedText = await translateText(gptAnswer);
+        const translatedTextWithoutGPT = await translateText(msg.text);
         console.log("====================================");
-        console.log("Arabic text", msg.text);
+        console.log(`${detectLanguageName} text:`, msg.text);
         console.log("====================================");
-        console.log("English text", gptAnswer);
+        console.log("English text:", gptAnswer);
         console.log("====================================");
-        console.log("Kurdish text", translatedText.replace(/&quot;/g, ""));
+        console.log("Kurdish text:", translatedText.replace(/&quot;/g, ""));
+        console.log("====================================");
+        console.log(
+          "Without GPT text:",
+          translatedTextWithoutGPT.replace(/&quot;/g, "")
+        );
 
         // send the kurdish text to user
         bot.telegram.sendMessage(
           chatId,
-          `${translatedText.replace(
+          `١. ورگێرانی زمانی ${detectLanguageName} بۆ کوردی بە ژیری دەستکرد:\n\n'${translatedText.replace(
             /&quot;/g,
             ""
-          )}\n\nدروستکەری بۆت: @Mohammed_jabbar`
-        );
-      } else {
-        // if its not arabic
-        // translate from any language to kurdish
-        const translatedText = await translateText(msg.text);
-        console.log("====================================");
-        console.log(isArabic, msg.text);
-        console.log("====================================");
-        console.log("Kurdish text", translatedText.replace(/&quot;/g, ""));
-
-        // send the kurdish text to user
-        bot.telegram.sendMessage(
-          chatId,
-          `${translatedText.replace(
+          )}'\n\n٢. ورەگێرانی زمانی ${detectLanguageName} بۆ کوردی بەبێ ژیری دەستکرد بە وەرگێری گوگڵ:\n\n'${translatedTextWithoutGPT.replace(
             /&quot;/g,
             ""
-          )}\n\nدروستکەری بۆت: @Mohammed_jabbar`
+          )}'\n\nدروستکەری بۆت: @Mohammed_jabbar`
         );
-
-        // bot.telegram.sendMessage(
-        //   chatId,
-        //   "ببوورە ئەم بۆتە تەنها وەرگێران بۆ زمانی عەرەبی ئەکات!"
-        // );
       }
     } else {
       bot.telegram.sendMessage(chatId, "ببوورە ئەم بۆتە بۆتۆ نیە!");
@@ -93,3 +80,8 @@ server.listen(port, () => {
 });
 
 bot.launch();
+
+// bot.telegram.sendMessage(
+//   chatId,
+//   "ببوورە ئەم بۆتە تەنها وەرگێران بۆ زمانی عەرەبی ئەکات!"
+// );
