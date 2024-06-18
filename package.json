@@ -1,14 +1,34 @@
 {
-  "name": "translate-bot",
-  "version": "1.0.0",
+  "name": "translatetoku",
+  "version": "2.0.0",
+  "description": "A Telegram bot that translates text from any language to Kurdish using ChatGPT and Google Translate.",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/mohammedd-jabbar/translateToKu/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohammedd-jabbar/translateToKu.git"
+  },
+  "keywords": [
+    "Telegram",
+    "bot",
+    "translator",
+    "Kurdish",
+    "ChatGPT",
+    "Google Translate",
+    "Node.js",
+    "AI"
+  ],
+  "author": "Mohammed Jabbar",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "main": "src/index.ts",
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc"
   },
-  "author": "Mohammed",
-  "license": "ISC",
-  "description": "",
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.5",
