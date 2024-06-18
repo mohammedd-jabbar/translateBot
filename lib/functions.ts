@@ -48,9 +48,9 @@ export async function detectLanguage(text: TText) {
       `https://translation.googleapis.com/language/translate/v2/detect?q=${text}&target=ckb&key=${process.env.GOOGLE_TRANSLATE}`
     );
 
-    if (res.data.data.detections[0][0].language !== "ar") return false;
+    if (res.data.data.detections[0][0].language !== "ar") return "ar";
 
-    return true;
+    return res.data.data.detections[0][0].language;
   } catch (error) {
     console.log("Detect Language Error:", (error as TError).message);
     throw new Error((error as TError).message);
