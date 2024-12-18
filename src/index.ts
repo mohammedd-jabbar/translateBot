@@ -65,7 +65,7 @@ bot.on("message", async (msg) => {
             ""
           )}'\n\nدروستکەری بۆت: @Mohammed_jabbar`
         );
-      }
+      } // create an else here if the text is not arabic
     } else {
       bot.telegram.sendMessage(chatId, "ببوورە ئەم بۆتە بۆتۆ نیە!");
     }
